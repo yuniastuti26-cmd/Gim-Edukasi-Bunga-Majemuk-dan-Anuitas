@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Saudagar Nusantara: Bunga Majemuk dan Anuitas</title>
+<style>
+:root{--bg:#f6faf9;--card:#fff;--ink:#12305a;--mut:#51657f;--teal:#0f8b8d;--tealp:#dff3f2;--gold:#c98a00;--goldp:#fff3d1;--red:#c0392b;--ok:#1e8e4e;--line:#d5e2e6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1c2b;--card:#172a40;--ink:#e8f0f8;--mut:#9fb3c8;--tealp:#12383d;--goldp:#3b3115;--line:#2b4260;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1c2b;--card:#172a40;--ink:#e8f0f8;--mut:#9fb3c8;--tealp:#12383d;--goldp:#3b3115;--line:#2b4260;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,"Segoe UI",Roboto,sans-serif}
+.w{max-width:880px;margin:0 auto;padding:12px}
+header{background:linear-gradient(135deg,var(--teal),#12305a);color:#fff;border-radius:16px;padding:16px;margin-bottom:12px}
+header h1{margin:0;font-size:1.3rem}header p{margin:4px 0 10px;opacity:.9;font-size:.9rem}
+.st{display:flex;gap:8px;flex-wrap:wrap}.st span{background:rgba(255,255,255,.18);padding:3px 10px;border-radius:99px;font-weight:600;font-size:.9rem}
+.map{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.zb{border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:10px 6px;font:inherit;font-weight:700;cursor:pointer;text-align:center}
+.zb small{display:block;font-weight:400;color:var(--mut)}.zb.on{border-color:var(--teal);background:var(--tealp)}.zb:disabled{opacity:.5;cursor:not-allowed}
+.zone{display:none}.zone.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+h2{margin:0 0 8px;font-size:1.15rem;color:var(--teal)}h3{margin:10px 0 4px;font-size:1rem}
+.f{background:var(--goldp);border-left:4px solid var(--gold);padding:8px 12px;border-radius:8px;margin:6px 0;font-weight:600}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.g2{grid-template-columns:1fr}}
+label{display:block;font-size:.85rem;color:var(--mut);margin-top:6px}
+input,select{width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+.btn,.opt{display:block;width:100%;margin-top:8px;padding:10px 12px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;text-align:left;cursor:pointer}
+.btn{background:var(--teal);border-color:var(--teal);color:#fff;font-weight:700;text-align:center}
+.opt:hover:not(:disabled){border-color:var(--teal)}.opt.ok{border-color:var(--ok);background:rgba(30,142,78,.15)}.opt.no{border-color:var(--red);background:rgba(192,57,43,.14)}
+.fb{margin-top:8px;padding:8px 10px;border-radius:8px;background:var(--tealp);display:none}
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:10px 0}
+.res div{background:var(--tealp);border-radius:10px;padding:8px;font-size:.85rem;color:var(--mut)}.res b{display:block;color:var(--ink);font-size:1.05rem}
+.tw{overflow-x:auto;max-height:280px;overflow-y:auto}table{border-collapse:collapse;width:100%;font-size:.85rem}
+th,td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:right;white-space:nowrap}th{position:sticky;top:0;background:var(--tealp)}th:first-child,td:first-child{text-align:center}
+.bar{height:10px;border-radius:5px;background:var(--teal);margin:2px 0}.bar.t{background:var(--gold)}
+details{border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:8px 0;background:var(--bg)}summary{cursor:pointer;font-weight:700}
+.qh{font-weight:700;color:var(--gold)}.hr{color:var(--red);font-weight:700}
+sup{font-size:.7em}
+</style></head><body><div class="w">
+<header><h1>🧭 Saudagar Nusantara</h1><p>Petualangan Bunga Majemuk dan Anuitas · Matematika Kelas XII (Fase F)</p>
+<div class="st"><span>🪙 <b id="coin">0</b></span><span>⭐ XP <b id="xp">0</b></span><span id="hp" style="display:none"></span></div></header>
+<div class="map">
+<button class="zb on" data-z="1">⚓ Zona 1<small>Pelabuhan Bunga</small></button>
+<button class="zb" data-z="2" disabled>🏰 Zona 2<small>Benteng Anuitas 🔒</small></button>
+<button class="zb" data-z="3" disabled>👑 Zona 3<small>Saudagar Agung 🔒</small></button></div>
+
+<!-- ZONA 1 -->
+<section class="zone on" id="z1">
+<div class="card"><h2>📖 Misi 1: Materi Bunga Majemuk</h2>
+<p><b>Bunga tunggal</b>: bunga dihitung hanya dari modal awal. <b>Bunga majemuk</b>: bunga ikut berbunga (bunga berbunga) sehingga uang tumbuh lebih cepat.</p>
+<div class="f">Bunga tunggal: M<sub>n</sub> = M(1 + n·i)</div>
+<div class="f">Bunga majemuk: M<sub>n</sub> = M(1 + i)<sup>n</sup></div>
+<p>M = modal awal, i = suku bunga per periode, n = banyak periode. Jika bunga r per tahun dibungakan m kali setahun selama t tahun: <b>i = r/m</b> dan <b>n = t × m</b>.</p>
+<div class="f">Nilai sekarang: M = M<sub>n</sub> / (1 + i)<sup>n</sup></div></div>
+
+<div class="card"><h2>🧪 Misi 2: Simulasi Pertumbuhan Uang</h2>
+<div class="g2"><div><label>Modal awal (Rp)</label><input id="s1m" type="number" value="10000000"></div>
+<div><label>Bunga per tahun (%)</label><input id="s1r" type="number" value="6" step="0.5"></div>
+<div><label>Lama (tahun, maks 30)</label><input id="s1t" type="number" value="5" min="1" max="30"></div>
+<div><label>Pembungaan majemuk</label><select id="s1f"><option value="1">Tahunan (m=1)</option><option value="2">Semesteran (m=2)</option><option value="4">Triwulan (m=4)</option><option value="12">Bulanan (m=12)</option></select></div></div>
+<div class="res" id="s1res"></div>
+<p style="font-size:.85rem;color:var(--mut)">🟡 bunga tunggal · 🟢 bunga majemuk. Ubah angkanya dan amati selisihnya!</p>
+<div class="tw" id="s1tab"></div></div>
+
+<div class="card"><h2>✏️ Contoh Soal dan Pembahasan</h2>
+<details><summary>Contoh 1: Tunggal vs majemuk</summary><p>Modal Rp10.000.000, bunga 6% per tahun, 5 tahun. Bandingkan hasilnya.</p>
+<p><b>Tunggal:</b> M₅ = 10.000.000(1 + 5×0,06) = Rp13.000.000<br><b>Majemuk:</b> M₅ = 10.000.000(1,06)<sup>5</sup> = 10.000.000 × 1,3382256 ≈ Rp13.382.256<br><b>Selisih:</b> Rp382.256. Bunga majemuk lebih besar karena bunga ikut berbunga.</p></details>
+<details><summary>Contoh 2: Pembungaan triwulan</summary><p>Rp2.000.000 dibungakan 12% per tahun, dibungakan tiap triwulan selama 1 tahun.</p>
+<p>i = 12%/4 = 3%, n = 1×4 = 4. M₄ = 2.000.000(1,03)<sup>4</sup> = 2.000.000 × 1,1255088 ≈ <b>Rp2.251.018</b>.</p></details>
+<details><summary>Contoh 3: Nilai sekarang</summary><p>Berapa yang harus ditabung sekarang agar 3 tahun lagi menjadi Rp20.000.000 (bunga majemuk 10% per tahun)?</p>
+<p>M = 20.000.000 / (1,1)<sup>3</sup> = 20.000.000 / 1,331 ≈ <b>Rp15.026.296</b>.</p></details></div>
+
+<div class="card"><h2>⚔️ Misi 3: Kuis Pelabuhan</h2><p>Benar minimal 2 dari 3 soal untuk membuka Zona 2. Tiap jawaban benar +10 🪙.</p><div id="q1"></div></div>
+</section>
+
+<!-- ZONA 2 -->
+<section class="zone" id="z2">
+<div class="card"><h2>📖 Misi 1: Materi Anuitas</h2>
+<p><b>Anuitas</b> adalah pembayaran tetap tiap periode untuk melunasi pinjaman. Setiap anuitas terdiri dari <b>bunga</b> dan <b>angsuran pokok</b>.</p>
+<div class="f">Anuitas: A = M·i / (1 − (1 + i)<sup>−n</sup>)</div>
+<div class="f">Bunga ke-k = sisa pinjaman × i<br>Angsuran pokok ke-k = A − bunga ke-k<br>Sisa pinjaman baru = sisa lama − angsuran pokok</div>
+<p>Seiring waktu, <b>porsi bunga mengecil</b> dan <b>porsi pokok membesar</b>, sedangkan anuitas tetap sama.</p></div>
+
+<div class="card"><h2>🧪 Misi 2: Simulasi Cicilan dan Tabel Angsuran</h2>
+<div class="g2"><div><label>Pinjaman (Rp)</label><input id="s2m" type="number" value="12000000"></div>
+<div><label>Bunga per bulan (%)</label><input id="s2r" type="number" value="1" step="0.1"></div>
+<div><label>Lama (bulan, maks 60)</label><input id="s2n" type="number" value="12" min="1" max="60"></div></div>
+<div class="res" id="s2res"></div><div class="tw" id="s2tab"></div></div>
+
+<div class="card"><h2>✏️ Contoh Soal dan Pembahasan</h2>
+<details><summary>Contoh 1: Menghitung anuitas</summary><p>Pinjaman Rp1.000.000, bunga 2% per bulan, dilunasi 3 bulan.</p>
+<p>A = 1.000.000 × 0,02 / (1 − 1,02<sup>−3</sup>) = 20.000 / 0,057678 ≈ <b>Rp346.755</b>.</p></details>
+<details><summary>Contoh 2: Tabel angsuran</summary><p>Dari Contoh 1:<br>Bulan 1: bunga 20.000, pokok 326.755, sisa 673.245.<br>Bulan 2: bunga 13.465, pokok 333.290, sisa 339.955.<br>Bulan 3: bunga 6.799, pokok 339.956, sisa ≈ 0 (lunas).</p><p>Perhatikan: bunga menurun, pokok meningkat, anuitas tetap.</p></details>
+<details><summary>Contoh 3: Bunga dari sisa pinjaman</summary><p>Pinjaman Rp5.000.000 dengan bunga 2% per bulan. Bunga bulan pertama = 5.000.000 × 2% = <b>Rp100.000</b>. Jika anuitas Rp1.200.000, angsuran pokok pertama = 1.200.000 − 100.000 = Rp1.100.000.</p></details></div>
+
+<div class="card"><h2>⚔️ Misi 3: Kuis Benteng</h2><p>Benar minimal 3 dari 4 soal untuk membuka Zona 3.</p><div id="q2"></div></div>
+</section>
+
+<!-- ZONA 3 -->
+<section class="zone" id="z3">
+<div class="card"><h2>👑 Pertarungan Bos: Saudagar Agung</h2>
+<p>Kamu punya <b>3 ❤️</b>. Jawaban salah mengurangi 1 ❤️. Kalahkan bos dengan menjawab minimal 4 dari 5 soal HOTS!</p><div id="q3"></div></div>
+<div class="card" id="final" style="display:none"></div>
+</section>
+</div>
+<script>
+const $=id=>document.getElementById(id),R=n=>'Rp'+Math.round(n).toLocaleString('id-ID');
+const S={coin:0,xp:0,hp:3,done:{}};
+function upd(){$('coin').textContent=S.coin;$('xp').textContent=S.xp}
+function hearts(){const h=$('hp');h.style.display='inline';h.textContent='❤️'.repeat(S.hp)+'🖤'.repeat(3-S.hp)}
+function show(z){document.querySelectorAll('.zone').forEach(e=>e.classList.toggle('on',e.id=='z'+z));document.querySelectorAll('.zb').forEach(b=>b.classList.toggle('on',b.dataset.z==z));window.scrollTo(0,0)}
+document.querySelectorAll('.zb').forEach(b=>b.onclick=()=>show(b.dataset.z));
+function unlock(z){const b=document.querySelector(`.zb[data-z="${z}"]`);b.disabled=false;b.querySelector('small').textContent=b.querySelector('small').textContent.replace(' 🔒','')}
+
+function sim1(){const M=+$('s1m').value,r=+$('s1r').value/100,t=Math.min(30,Math.max(1,Math.floor(+$('s1t').value)||1)),m=+$('s1f').value;
+let rows='',mx=M*(1+r*t),mj=M*Math.pow(1+r/m,t*m);mx=Math.max(mx,mj);
+for(let y=1;y<=t;y++){const a=M*(1+r*y),b=M*Math.pow(1+r/m,y*m);rows+=`<tr><td>${y}</td><td>${R(a)}<div class="bar t" style="width:${a/mx*100}%"></div></td><td>${R(b)}<div class="bar" style="width:${b/mx*100}%"></div></td></tr>`}
+const a=M*(1+r*t);$('s1res').innerHTML=`<div>Bunga tunggal<b>${R(a)}</b></div><div>Bunga majemuk<b>${R(mj)}</b></div><div>Selisih<b>${R(mj-a)}</b></div><div>i per periode · n<b>${(r/m*100).toFixed(3)}% · ${t*m}</b></div>`;
+$('s1tab').innerHTML=`<table><tr><th>Tahun</th><th>Tunggal</th><th>Majemuk</th></tr>${rows}</table>`}
+function sim2(){const M=+$('s2m').value,i=+$('s2r').value/100,n=Math.min(60,Math.max(1,Math.floor(+$('s2n').value)||1));
+const A=i?M*i/(1-Math.pow(1+i,-n)):M/n;let s=M,tb=0,rows='';
+for(let k=1;k<=n;k++){const b=s*i,p=A-b;s=Math.max(0,s-p);tb+=b;rows+=`<tr><td>${k}</td><td>${R(A)}</td><td>${R(b)}</td><td>${R(p)}</td><td>${R(s)}</td></tr>`}
+$('s2res').innerHTML=`<div>Anuitas per bulan<b>${R(A)}</b></div><div>Total dibayar<b>${R(A*n)}</b></div><div>Total bunga<b>${R(tb)}</b></div>`;
+$('s2tab').innerHTML=`<table><tr><th>Bln</th><th>Anuitas</th><th>Bunga</th><th>Pokok</th><th>Sisa</th></tr>${rows}</table>`}
+['s1m','s1r','s1t','s1f'].forEach(i=>$(i).oninput=sim1);['s2m','s2r','s2n'].forEach(i=>$(i).oninput=sim2);sim1();sim2();
+
+function quiz(id,qs,need,boss,onWin){const el=$(id);let i=0,sc=0;if(boss){S.hp=3;hearts()}
+function render(){if(i>=qs.length)return end();const q=qs[i];
+let h=`<div class="qh">Soal ${i+1} dari ${qs.length}</div><p>${q.q}</p>`;
+h+=q.t=='num'?`<input id="${id}n" type="number" placeholder="Jawaban (angka saja)"><button class="btn" id="${id}ok">Periksa</button>`:q.o.map((o,k)=>`<button class="opt" data-k="${k}">${o}</button>`).join('');
+el.innerHTML=h+`<div class="fb" id="${id}fb"></div>`;
+if(q.t=='num')$(id+'ok').onclick=()=>ans(Math.abs(+$(id+'n').value-q.a)<=1);else el.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const k=+b.dataset.k,ok=k==q.a;b.classList.add(ok?'ok':'no');if(!ok)el.querySelector(`.opt[data-k="${q.a}"]`).classList.add('ok');ans(ok)})}
+function ans(ok){const q=qs[i];el.querySelectorAll('.opt,.btn,input').forEach(b=>b.disabled=true);
+if(ok){sc++;S.coin+=10;S.xp+=20}else if(boss){S.hp--;hearts()}upd();
+const f=$(id+'fb');f.style.display='block';f.innerHTML=`<b>${ok?'✅ Benar! +10 🪙':'❌ Belum tepat.'}</b><br>${q.e}<button class="btn" id="${id}nx">${boss&&S.hp<=0?'Lihat hasil':'Lanjut ➜'}</button>`;
+$(id+'nx').onclick=()=>{i++;if(boss&&S.hp<=0)i=qs.length;render()}}
+function end(){const win=sc>=need&&(!boss||S.hp>0);
+el.innerHTML=`<h3>${win?'🎉 Misi berhasil!':'😅 Belum berhasil'}</h3><p>Skor: <b>${sc}/${qs.length}</b>${boss?' · Sisa nyawa: '+'❤️'.repeat(S.hp):''}</p>`+(win?'':`<button class="btn" id="${id}rt">Coba lagi</button>`);
+if(win){S.xp+=50;upd();onWin(sc)}else $(id+'rt').onclick=()=>{i=0;sc=0;if(boss){S.hp=3;hearts()}render()}}
+render()}
+
+quiz('q1',[
+{q:'Modal Rp1.000.000 dibungakan majemuk 10% per tahun. Nilai akhir setelah 2 tahun adalah ...',o:['Rp1.200.000','Rp1.210.000','Rp1.220.000','Rp1.100.000'],a:1,e:'M₂ = 1.000.000 × (1,1)² = 1.000.000 × 1,21 = Rp1.210.000.'},
+{q:'Rp5.000.000 dibungakan majemuk 8% per tahun. Nilai akhir setelah 3 tahun adalah ...',o:['Rp6.200.000','Rp6.298.560','Rp6.350.000','Rp6.000.000'],a:1,e:'M₃ = 5.000.000 × (1,08)³ = 5.000.000 × 1,259712 = Rp6.298.560.'},
+{q:'Bunga 12% per tahun dibungakan tiap triwulan selama 2 tahun. Nilai i dan n yang digunakan adalah ...',o:['i = 12%, n = 2','i = 3%, n = 8','i = 1%, n = 24','i = 6%, n = 4'],a:1,e:'i = 12%/4 = 3% per triwulan dan n = 2 × 4 = 8 periode.'}
+],2,false,()=>{S.done[1]=1;unlock(2);$('q1').insertAdjacentHTML('beforeend','<p>🔓 <b>Zona 2: Benteng Anuitas</b> terbuka!</p><button class="btn" onclick="show(2)">Menuju Zona 2 ➜</button>')});
+
+quiz('q2',[
+{q:'Pinjaman Rp5.000.000 dengan bunga 2% per bulan. Bunga pada angsuran pertama adalah ...',o:['Rp50.000','Rp100.000','Rp150.000','Rp200.000'],a:1,e:'Bunga = sisa pinjaman × i = 5.000.000 × 0,02 = Rp100.000.'},
+{q:'Anuitas Rp500.000 dan bunga angsuran ke-1 Rp150.000. Angsuran pokok ke-1 adalah ...',o:['Rp650.000','Rp350.000','Rp300.000','Rp150.000'],a:1,e:'Angsuran pokok = anuitas − bunga = 500.000 − 150.000 = Rp350.000.'},
+{q:'Pinjaman Rp2.000.000, anuitas Rp600.000, bunga 3% per bulan. Bunga angsuran ke-2 adalah ...',o:['Rp60.000','Rp43.800','Rp58.200','Rp29.200'],a:1,e:'Bunga ke-1 = 60.000, pokok ke-1 = 540.000, sisa = 1.460.000. Bunga ke-2 = 1.460.000 × 3% = Rp43.800.'},
+{t:'bs',q:'Benar atau Salah? Pada anuitas, makin lama porsi bunga makin kecil dan porsi angsuran pokok makin besar, walaupun anuitas tetap.',o:['Benar','Salah'],a:0,e:'Benar. Bunga dihitung dari sisa pinjaman yang terus menurun, sehingga bagian pokok bertambah.'}
+],3,false,()=>{S.done[2]=1;unlock(3);$('q2').insertAdjacentHTML('beforeend','<p>🔓 <b>Zona 3: Saudagar Agung</b> terbuka!</p><button class="btn" onclick="show(3)">Hadapi Bos ➜</button>')});
+
+quiz('q3',[
+{q:'Pak Budi menabung Rp8.000.000 dengan bunga 10% per tahun, dibungakan per semester. Nilai tabungan setelah 2 tahun adalah ...',o:['Rp9.600.000','Rp9.724.050','Rp9.680.000','Rp9.800.000'],a:1,e:'i = 5%, n = 4. M₄ = 8.000.000 × (1,05)⁴ = 8.000.000 × 1,21550625 = Rp9.724.050.'},
+{t:'num',q:'Modal Rp1.000.000, bunga 10% per tahun, 3 tahun. Berapa rupiah selisih hasil bunga majemuk dan bunga tunggal?',a:31000,e:'Majemuk: 1.000.000 × 1,331 = 1.331.000. Tunggal: 1.000.000 × 1,3 = 1.300.000. Selisih = <b>31.000</b>.'},
+{t:'bs',q:'Benar atau Salah? Bunga 12% per tahun yang dibungakan bulanan menghasilkan nilai akhir lebih besar daripada dibungakan tahunan dalam waktu yang sama.',o:['Benar','Salah'],a:0,e:'Benar. Makin sering dibungakan, bunga makin cepat ikut berbunga. (1,01)¹² ≈ 1,1268 &gt; 1,12.'},
+{q:'Agar 3 tahun lagi memiliki Rp20.000.000 dengan bunga majemuk 10% per tahun, tabungan awal yang diperlukan sekitar ...',o:['Rp14.000.000','Rp15.026.296','Rp15.500.000','Rp16.000.000'],a:1,e:'M = 20.000.000 / (1,1)³ = 20.000.000 / 1,331 ≈ Rp15.026.296.'},
+{q:'Pinjaman Rp2.000.000, anuitas Rp600.000, bunga 3% per bulan. Sisa pinjaman setelah angsuran ke-1 adalah ...',o:['Rp1.400.000','Rp1.460.000','Rp1.540.000','Rp1.940.000'],a:1,e:'Bunga = 60.000, pokok = 600.000 − 60.000 = 540.000, sisa = 2.000.000 − 540.000 = Rp1.460.000.'}
+],4,true,()=>{S.done[3]=1;$('final').style.display='block';$('final').innerHTML=`<h2>🏆 Gelar: Saudagar Agung Nusantara!</h2><p>Total 🪙 <b>${S.coin}</b> · XP <b>${S.xp}</b>. Kamu menguasai bunga majemuk, nilai sekarang, dan anuitas. Tunjukkan layar ini kepada gurumu!</p>`});
+</script></body></html>
